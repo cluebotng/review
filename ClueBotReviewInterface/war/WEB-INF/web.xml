@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>downloadServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.DownloadImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>downloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>welcomeServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.WelcomeImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>welcomeServlet</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>queryServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.QueryImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>queryServlet</servlet-name>
+    <url-pattern>/query</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>flushServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.FlushImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>flushServlet</servlet-name>
+    <url-pattern>/flush</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>runStatsServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.RunStatsImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>runStatsServlet</servlet-name>
+    <url-pattern>/stats</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>statisticsServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.StatisticsImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>statisticsServlet</servlet-name>
+    <url-pattern>/_ah/cron/stats</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReportInterfaceServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.ReportInterfaceCronImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ReportInterfaceServlet</servlet-name>
+  	<url-pattern>/_ah/cron/reportinterface</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>reviewServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.ReviewServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>reviewServlet</servlet-name>
+    <url-pattern>/cluebotreviewinterface/review</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>adminServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.AdminServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>adminServlet</servlet-name>
+    <url-pattern>/cluebotreviewadmininterface/admin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>addEditQueueServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.AddEditQueueImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>addEditQueueServlet</servlet-name>
+  	<url-pattern>/_ah/queue/add-edit-queue</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GarbageCollectionQueueServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.GarbageCollectionQueueImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GarbageCollectionQueueServlet</servlet-name>
+  	<url-pattern>/_ah/queue/garbage-collection-queue</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>EditDoneQueueServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.EditDoneQueueImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>EditDoneQueueServlet</servlet-name>
+  	<url-pattern>/_ah/queue/edit-done-queue</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GarbageCollectionServlet</servlet-name>
+    <servlet-class>org.cluenet.cluebot.reviewinterface.server.GarbageCollectionImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GarbageCollectionServlet</servlet-name>
+  	<url-pattern>/collectGarbage</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+    <filter-name>jdo</filter-name>
+    <filter-class>org.cluenet.cluebot.reviewinterface.server.JDOFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>jdo</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+
+<!--  
+  <filter>
+    <filter-name>appstats</filter-name>
+    <filter-class>com.google.appengine.tools.appstats.AppstatsFilter</filter-class>
+    <init-param>
+      <param-name>logMessage</param-name>
+      <param-value>Appstats available: /appstats/details?time={ID}</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>appstats</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+-->
+  
+  <filter>
+    <filter-name>requireAdmin</filter-name>
+    <filter-class>org.cluenet.cluebot.reviewinterface.server.Authentication</filter-class>
+    <init-param>
+      <param-name>authType</param-name>
+      <param-value>requireAdmin</param-value>
+    </init-param>
+  </filter>
+  
+  <filter>
+    <filter-name>requirePrivileged</filter-name>
+    <filter-class>org.cluenet.cluebot.reviewinterface.server.Authentication</filter-class>
+    <init-param>
+      <param-name>authType</param-name>
+      <param-value>requirePrivileged</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>requirePrivileged</filter-name>
+    <servlet-name>reviewServlet</servlet-name>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>requireAdmin</filter-name>
+    <servlet-name>queryServlet</servlet-name>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>requireAdmin</filter-name>
+    <servlet-name>GarbageCollectionServlet</servlet-name>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>requirePrivileged</filter-name>
+    <url-pattern>*review.jsp</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>requireAdmin</filter-name>
+    <servlet-name>adminServlet</servlet-name>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>requireAdmin</filter-name>
+    <url-pattern>*admin.jsp</url-pattern>
+  </filter-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>xmppServlet</servlet-name>
+  	<servlet-class>org.cluenet.cluebot.reviewinterface.server.XMPPReceiverServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>xmppServlet</servlet-name>
+  	<url-pattern>/_ah/xmpp/message/chat/</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>apiServlet</servlet-name>
+  	<servlet-class>org.cluenet.cluebot.reviewinterface.server.APIImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>apiServlet</servlet-name>
+  	<url-pattern>/api</url-pattern>
+  </servlet-mapping>
+ 
+<!-- 
+  <servlet>
+    <servlet-name>appstats</servlet-name>
+    <servlet-class>com.google.appengine.tools.appstats.AppstatsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appstats</servlet-name>
+    <url-pattern>/appstats/*</url-pattern>
+  </servlet-mapping>
+
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/appstats/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+-->
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>welcome</welcome-file>
+  </welcome-file-list>
+
+</web-app>

@@ -1,0 +1,41 @@
+/** Add css rules here for your application. */
+
+body {
+	background: #444444;
+}
+#box {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	right: 8px;
+	min-width: 1275px;
+}
+#content {
+	width: 500px;
+	background: #e0e0ff;
+	padding-left: 25px;
+	padding-right: 25px;
+	border: 1px solid #ddffee;
+	margin-left: auto;
+	margin-right: auto;
+}
+p:first-letter {
+	font-weight: bold;
+}
+p:first-line {
+	font-size: 110%;
+}
+p {
+	text-align: justify;
+}
+
+#stats {
+	position: absolute;
+	max-width: 300px;
+	left: 0px;
+	top: 0px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background: #e0e0ff;
+	border: 1px solid #ddffee;
+}
